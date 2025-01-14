@@ -73,6 +73,9 @@ cmake --build build_cuda \
 Ruche is a cluster using Slurm as job submission system.
 You should not run executables on the login node, beyond compilers and usual tasks.
 
+> [!WARNING]
+> Beware that the login node `login02` has a GPU, which may mess with your configuration!
+
 ### Using one-liner commands
 
 These commands allow to run one executable in a CPU or a GPU job, and redirect its standard output/error to the screen, just like you were running it live.
