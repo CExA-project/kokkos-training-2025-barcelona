@@ -7,13 +7,26 @@ ssh login@ruche.mesocentre.universite-paris-saclay.fr
 cd $WORKDIR
 ```
 
-For Windows users without SSH, use KiTTY: https://github.com/cyd01/KiTTY/releases
+For Windows users without SSH, use [KiTTY](https://github.com/cyd01/KiTTY/releases).
+
+## Move to the working directory
+
+```sh
+cd $WORKDIR
+```
 
 ## Clone the repo of the training
 
+We will start with the tutorials of this repository:
+
 ```sh
-git clone --recurse-submodules \
-          https://github.com/CExA-project/cexa-kokkos-tutorials.git
+git clone https://github.com/CExA-project/cexa-kokkos-tutorials.git
+```
+
+If we have time, we will pick some exercises of the Kokkos official tutorials too:
+
+```sh
+git clone git@github.com:kokkos/kokkos-tutorials.git
 ```
 
 ## Load modules and set environment variables
@@ -28,9 +41,8 @@ export OMP_PROC_BIND=spread \
 
 ## Ruche documentation
 
-Ruche documentation: https://mesocentre.pages.centralesupelec.fr/user_doc/
-Ruche CPU model: Intel Xeon Gold 6230 (Cascade Lake)
-Ruche GPU model: NVIDIA V100
+Please refer to the [Ruche documentation](https://mesocentre.pages.centralesupelec.fr/user_doc/).
+Ruche provides CPU nodes with Intel Xeon Gold 6230 (Cascade Lake) processors, and GPU nodes with NVIDIA V100 devices.
 
 ## Submit jobs on Ruche
 
@@ -60,7 +72,7 @@ Alternatively to the one-liner commands provided above, you can also use submiss
 Script for CPU:
 
 ```sh
-!/bin/bash
+#!/bin/bash
 
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
@@ -85,7 +97,7 @@ path/to/exe
 Script for GPU:
 
 ```sh
-!/bin/bash
+#!/bin/bash
 
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
