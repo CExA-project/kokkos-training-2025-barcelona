@@ -4,10 +4,11 @@
 
 ```sh
 ssh login@ruche.mesocentre.universite-paris-saclay.fr
-cd $WORKDIR
 ```
 
 For Windows users without SSH, use [KiTTY](https://github.com/cyd01/KiTTY/releases).
+
+Login and password should be given to you by the training staff.
 
 ## Move to the working directory
 
@@ -26,7 +27,7 @@ git clone https://github.com/CExA-project/cexa-kokkos-tutorials.git
 If we have time, we will pick some exercises of the Kokkos official tutorials too:
 
 ```sh
-git clone git@github.com:kokkos/kokkos-tutorials.git
+git clone https://github.com/kokkos/kokkos-tutorials.git
 ```
 
 ## Load modules and set environment variables
