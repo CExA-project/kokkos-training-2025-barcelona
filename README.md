@@ -30,6 +30,11 @@ If we have time, we will pick some exercises of the Kokkos official tutorials to
 git clone https://github.com/kokkos/kokkos-tutorials.git
 ```
 
+## Ruche documentation
+
+Please refer to the [Ruche documentation](https://mesocentre.pages.centralesupelec.fr/user_doc/).
+Ruche provides CPU nodes with Intel Xeon Gold 6230 (Cascade Lake) processors, and GPU nodes with NVIDIA V100 devices.
+
 ## Load modules and set environment variables
 
 ```sh
@@ -40,10 +45,28 @@ export OMP_PROC_BIND=spread \
        OMP_PLACES=threads
 ```
 
-## Ruche documentation
+## CMake commands for Ruche
 
-Please refer to the [Ruche documentation](https://mesocentre.pages.centralesupelec.fr/user_doc/).
-Ruche provides CPU nodes with Intel Xeon Gold 6230 (Cascade Lake) processors, and GPU nodes with NVIDIA V100 devices.
+Build with the OpenMP backend:
+
+```sh
+cmake -B build_openmp \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DKokkos_ENABLE_OPENMP=ON
+cmake --build build_openmp \
+      --parallel 5
+```
+
+Build with the Cuda backend:
+
+```sh
+cmake -B build_cuda \
+      -DCMAKE_BUILD_TYPE=Release \
+      -DKokkos_ENABLE_CUDA=ON \
+      -DKokkos_ARCH_VOLTA70=ON
+cmake --build build_cuda \
+      --parallel 5
+```
 
 ## Submit jobs on Ruche
 
@@ -125,26 +148,3 @@ sbatch my_script.sh
 ```
 
 See [the documentation](https://mesocentre.pages.centralesupelec.fr/user_doc/ruche/06_slurm_jobs_management/) for how to manage your Slurm jobs.
-
-## CMake commands for Ruche
-
-Build with the OpenMP backend:
-
-```sh
-cmake -B build_openmp \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DKokkos_ENABLE_OPENMP=ON
-cmake --build build_openmp \
-      --parallel 5
-```
-
-Build with the Cuda backend:
-
-```sh
-cmake -B build_cuda \
-      -DCMAKE_BUILD_TYPE=Release \
-      -DKokkos_ENABLE_CUDA=ON \
-      -DKokkos_ARCH_VOLTA70=ON
-cmake --build build_cuda \
-      --parallel 5
-```
