@@ -89,7 +89,7 @@ srun --partition cpu_short --cpus-per-task 20 --pty path/to/exe
 Run on GPU:
 
 ```sh
-srun --partition gpu --gres gpu:1 --pty path/to/exe
+srun --partition gpu_test --reservation zehnerp_153 --gres gpu:1 --pty path/to/exe
 ```
 
 ### Using a script (alternative)
@@ -130,7 +130,8 @@ Script for GPU:
 #SBATCH --ntasks=1
 #SBATCH --mem=10G
 #SBATCH --time=00:10:00
-#SBATCH --partition=gpu
+#SBATCH --partition=gpu_test
+#SBATCH --reservation zehnerp_153
 #SBATCH --gres gpu:1
 #SBATCH --job-name=kt25-exercise-gpu
 #SBATCH --output=%x.%J.out
